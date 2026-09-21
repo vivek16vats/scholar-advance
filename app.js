@@ -96,7 +96,7 @@ function renderApp() {
         <section id="home" class="hero">
           <div class="portrait-wrap">
             <img
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+              src="https://sites.google.com/sitesv-images-rt/AMxu72t_IwD5ZyBZQ9Hkk7ooZPAZsK6hEAOogCc8H5GUvkqCgB7TH9uV0KfNuy3AVShI_PWV4J9GVmtFvHwkMW3yxSs8pYHTAPt-BNrTrWrRBrRBybgdZZLXa2zxWslDEIS0YRhN5cLilnG8KF37clMk4v_VtiLlgiSLOL7-UY-Zcryz0ovMCROc--gMEwZo1wvEuqLhHouOsxtf-uu-fmPwT_DIEmcYgG2ehZ-oZpiI_H0=w1280"
               alt="Professor portrait"
               class="portrait"
             />

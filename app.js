@@ -17,15 +17,15 @@ const AUTO_PLAY_DELAY = 2000;
 const DRAG_MOVE_THRESHOLD = 50;
 
 const profileText = {
-  intro: "Hi, and welcome to my site!",
+  intro: "Welcome to my site!",
   headline:
-    "I am Sourya, an Assistant Professor in the Department of Economics at IIT Jodhpur. I completed my PhD in Economics at the University of Auckland Business School.",
+    "I am an Assistant Professor in the Department of Economics at IIT Jodhpur. I completed my PhD in Economics from the University of Auckland Business School.",
   body:
-    "My research looks at climate risks, agricultural transformation, circular systems, energy transitions, and distress migration, particularly in contexts shaped by structural development challenges. I care about advancing an economics for the post-growth era that speaks to lived vulnerability, where data, policy, and everyday realities intersect.",
+    "My research examines climate risks, agricultural transformation, circular systems, energy transitions, and distress migration, particularly in contexts shaped by structural development challenges.",
   teaching:
-    "Teaching is one of the most fulfilling aspects of my role. I especially enjoy teaching microeconomics, environmental economics, and econometrics.",
+    "Teaching is one of the most fulfilling aspects of my work. I especially enjoy teaching microeconomics, environmental economics, and econometrics.",
   closing:
-    "I am always interested in thoughtful conversations and new ideas. Drop me a line anytime via email."
+    "I am always open to new ideas. Please feel free to drop me an email."
 };
 
 const academicDetails = [
@@ -79,19 +79,18 @@ const feedbackQuotes = [
   "Clear explanations and uplifting positive comments that encourages to excel!"
 ];
 
+const researchFields = [
+  { label: "Applied Economics", href: "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:applied_economics" },
+  { label: "Climate Change", href: "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:climate_change" },
+  { label: "Agricultural Transformation", href: "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:agricultural_transformation" },
+  { label: "Green Transition", href: "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:green_transition" },
+  { label: "Just Migration", href: "https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=label:just_migration" }
+];
+
 function renderApp() {
   const app = document.getElementById("app");
   app.innerHTML = `
     <div class="site-shell">
-      <header class="topbar">
-        <div class="brand">Souryabrata Mohapatra</div>
-        <nav class="topnav" aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <a href="#details">Teaching</a>
-          <button class="search-button" type="button" aria-label="Search">⌕</button>
-        </nav>
-      </header>
-
       <main>
         <section id="home" class="hero">
           <div class="portrait-wrap">
@@ -101,11 +100,11 @@ function renderApp() {
               class="portrait"
             />
             <div class="social-row" aria-label="Social links">
-              <a href="#" aria-label="Email" class="social-icon">✉</a>
-              <a href="#" aria-label="CV" class="social-icon">CV</a>
-              <a href="#" aria-label="Google Scholar" class="social-icon">g</a>
-              <a href="#" aria-label="LinkedIn" class="social-icon">in</a>
-              <a href="#" aria-label="Twitter" class="social-icon">x</a>
+              <a href="mailto:smohapatra@iitj.ac.in" aria-label="Email" class="social-icon" target="_blank" rel="noopener noreferrer">✉</a>
+              <a href="https://drive.google.com/file/d/1U140KvmDrV1PHdIoye6PJWZWILVVoAxL/view?usp=sharing" aria-label="CV" class="social-icon" target="_blank" rel="noopener noreferrer">CV</a>
+              <a href="https://scholar.google.com/citations?user=TKbYqt0AAAAJ&hl=en" aria-label="Google Scholar" class="social-icon" target="_blank" rel="noopener noreferrer">g</a>
+              <a href="https://www.linkedin.com/in/souryabrata" aria-label="LinkedIn" class="social-icon" target="_blank" rel="noopener noreferrer">in</a>
+              <a href="https://orcid.org/0000-0002-3627-8739" aria-label="ORCID" class="social-icon" target="_blank" rel="noopener noreferrer">iD</a>
             </div>
           </div>
 
@@ -115,91 +114,59 @@ function renderApp() {
             <p>${profileText.body}</p>
             <p>${profileText.teaching}</p>
             <p>${profileText.closing}</p>
+            <div class="research-field-list" aria-label="Research areas">
+              ${researchFields
+                .map(
+                  (field) => `
+                    <a class="research-field-pill" href="${field.href}" target="_blank" rel="noopener noreferrer">${field.label}</a>
+                  `,
+                )
+                .join("")}
+            </div>
           </div>
 
-          <aside class="research-card">
-            <h2>Featured Paper</h2>
-            <div class="research-card-copy">
-              <p>Does commercial farming protect the environment? Evidence from chemical input use in Haryana, India</p>
-              <div class="research-meta">
-                <span>S Verma, KR Palta Singh, S Mohapatra</span>
-                <span>Journal of Agribusiness in Developing and Emerging Economies 16 (4), 894-909, 2026</span>
-              </div>
-            </div>
-            <div class="research-link-wrap">
-              <span class="research-dot"></span>
-              <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer">scholar.google.com</a>
-            </div>
-          </aside>
         </section>
 
-        <section class="feed-section" aria-labelledby="research-feed-title">
-          <div class="section-header">
-            <h2 id="research-feed-title">Research Feed</h2>
-          </div>
-          <div id="publications" class="publications-wrap"></div>
-        </section>
-
-        <section id="details" class="details-section">
-          <div class="details-grid">
-            <div class="details-column details-column-left">
-              <div class="entry-block">
-                <h3>IIT Jodhpur</h3>
-                <div class="role">Instructor</div>
-                <ul class="detail-list">
-                  <li>Introduction to Climate Change Economics (UG) — 2026</li>
-                  <li>Markets and the Economy (UG) — 2026</li>
-                  <li>Fundamentals of Economics (UG) — 2026</li>
-                  <li>Introduction to Green Economy (UG) — 2026</li>
-                  <li>Environmental Economics and Management (PG) — 2025</li>
-                  <li>Development and Environment (UG) — 2025</li>
-                  <li>Health and Development (UG) — 2025</li>
-                  <li>Engineering Design (UG) — 2025 (×2)</li>
-                </ul>
-              </div>
-
-              <div class="entry-block">
-                <h3>University of Auckland</h3>
-                <div class="role">Teaching Fellow</div>
-                <ul class="detail-list">
-                  <li>Principles of Economics (UG) — 2023 (×2)</li>
-                  <li>Economics, Markets and Law (UG) — 2021; 2022 (×2); 2023 (×2)</li>
-                  <li>Understanding the Global Economy (UG Summer School) — 2021; 2022</li>
-                </ul>
-              </div>
-
-              <div class="entry-block">
-                <h3>University of Auckland</h3>
-                <div class="role">Teaching Assistant</div>
-                <ul class="detail-list">
-                  <li>Energy and Environmental Economics (UG) — 2021; 2022</li>
-                  <li>Microeconomic Analysis (UG) — 2021 (×2); 2022</li>
-                  <li>Energy Economics (PG) — 2020</li>
-                  <li>Public Economics and Policy (PG) — 2020</li>
-                  <li>Understanding the Global Economy (UG) — 2019; 2020 (×2)</li>
-                </ul>
-              </div>
+        <div class="content-row">
+          <div class="feature-paper-wrap">
+            <div class="section-header feature-header">
+              <h2>Featured Paper</h2>
             </div>
-
-            <div class="details-column details-column-right">
-              <div class="feedback-card">
-                <h3>Student Feedback</h3>
-                <div class="feedback-list">
-                  ${feedbackQuotes
-                    .map(
-                      (quote) => `
-                        <blockquote class="quote-item">
-                          “${quote}”
-                        </blockquote>
-                      `,
-                    )
-                    .join("")}
+            <aside class="research-card">
+              <div class="research-card-copy">
+                <div class="carousel-card-title">
+                  <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer">Does commercial farming protect the environment? Evidence from chemical input use in Haryana, India</a>
+                </div>
+                <div class="research-meta">
+                  <span>S Verma, KR Palta Singh, S Mohapatra</span>
+                  <span>Journal of Agribusiness in Developing and Emerging Economies 16 (4), 894-909, 2026</span>
                 </div>
               </div>
-            </div>
+              <div class="publication-info research-link-wrap">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAsVBMVEVHcEz////O2/X////E1vRzpvpni9Dr8/6rwe9gmfZAhfUzZsFVf8ze6PiavPlWkvY9g/RCh/dLd8mOqNzq8f6IrvJJifU1acM+cMd5mdXk7/3X5fz////I2/wqYr/////p8v+lxPq5zfJvn/L4+/6sxfNkm/dUgdKYsN/1+f+ewf4tfPNdjuGVrd52p/t8rPz9/v/o8P2QuP2Mtf2ixf+gw/+oyP/J3v/o8f/C2f////8srEJGAAAAO3RSTlMADGgeif/5N7X3///4TdL+///+1Wzo////66ivGdz/A0Hhnvovxf//wlL+///9//8jjf///////7P9FQF2P90AAAEWSURBVHgBYiAaAPqiByyJgSiAotW2Hdt2sv+Fze/pWO/k8KY8mU4nQzabL5bzWb+t1pvtbr9e9dnheDpfdrvr7dC1++N53l52r937c28bttlCgNAebxBBns8V7iiy2hbNsBeQEoEfB7o43eO5bSIs/DsxwfE5lQj6WnIwtSBK55xgXWpXsqwISNX0nJ7SYsHzxjtnylQRrWowAuxkWdYCvoX81R1lTmn0nfgEeLKtPFsGvIr5NcKWzk+wUt+7JeeUTzV/SNaizDI+8/rTuZ5fz0X11CCsFagNvIcNvDdHRiMjUaxVpsWoWRLUBiZNox2y1IB0UCuVjP5n1iJSRe1oBk9hV1GKMzTqlq3urntfZag/mm4O+gN/9TJK3hsJ0QAAAABJRU5ErkJggg=="
+                  alt="Scholar icon"
+                  class="scholar-icon"
+                />
+                <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer">scholar.google.com</a>
+              </div>
+            </aside>
           </div>
-        </section>
+
+          <section class="feed-section" aria-labelledby="research-feed-title">
+            <div class="section-header">
+              <h2 id="research-feed-title">Research Feed</h2>
+            </div>
+            <div id="publications" class="publications-wrap"></div>
+          </section>
+        </div>
       </main>
+
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          Copyright © 2026 Souryabrata Mohapatra. All rights reserved.
+        </div>
+      </footer>
     </div>
   `;
 
@@ -453,18 +420,6 @@ function createCardMarkup(article) {
         <a href="${article.link}" target="_blank" rel="noopener noreferrer">${article.title}</a>
       </div>
       <div class="carousel-card-authors">${article.authors || ""}</div>
-      <div class="carousel-card-links">
-        <a
-          href="mailto:?subject=${encodeURIComponent("Interesting paper: " + article.title)}&body=${encodeURIComponent(article.link || "")}
-          "
-          class="icon-link gmail"
-          aria-label="Email this paper"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16Zm-2 2.06-6 4.5-6-4.5V18h12V8.06Z"/>
-          </svg>
-        </a>
-      </div>
       <div class="carousel-card-publication">
         <div class="publication-source">${article.publication ? article.publication : article.year}</div>
         <div class="publication-info">

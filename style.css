@@ -4,7 +4,7 @@
   --font-body: 1rem;
   --font-small: 0.875rem;
   --font-label: 0.8125rem;
-  --font-title: clamp(1.8rem, 3vw, 2.25rem);
+  --font-title: clamp(1.5rem, 3vw, 1.5rem);
   --font-section: 1.25rem;
   --font-entry: 1rem;
   --color-background: #fff;
@@ -15,10 +15,10 @@
   --color-line: #dfe4e6;
   --color-soft: #f6f8f9;
   --color-label: #405563;
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2rem;
+  --space-1: 0.3rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
   --space-section: 3.5rem;
   --radius: 8px;
   --sidebar-width: 270px;
@@ -123,7 +123,7 @@ h1:focus, h2:focus, main:focus { outline: none; }
   .portrait-link { width: 96px; flex-shrink: 0; margin: 0; }
   .profile-name { font-size: 1.2rem; }
   .profile-affiliation { margin: 0; font-size: var(--font-label); }
-  .section-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; margin-top: 18px; padding-top: 12px; }
+  .section-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; margin-top: 0px; padding-top: 15px; }
   .section-nav a { margin: 0; padding: 5px 8px; }
   .section-nav a[aria-current] { box-shadow: inset 0 -2px var(--color-link); }
   .profile-links { margin-top: 14px; }
